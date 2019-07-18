@@ -1,0 +1,49 @@
+﻿<Window x:Class="MVVMtest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mw="clr-namespace:MVVMtest.ModelWidoku"
+        xmlns:widok="clr-namespace:MVVMtest.Widok"
+        mc:Ignorable="d"
+        Title="MVVM" Height="250" Width="800" BorderBrush="#FF1781EC" BorderThickness="1" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <mw:WidokGlowny x:Key="MainView"/>
+        <widok:DecimalToWalutaKonw x:Key="konwDecimalToWaluta"/>
+        <widok:SkladoweDoSumyKonw x:Key="konwSkladoweDoSumy"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource MainView}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label HorizontalAlignment="Center" Margin="10">ZLECENIA</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Zlecenia, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
+            <Button x:Name="Testowy" Margin="50" Command="{Binding Zapisz}" CommandParameter="{StaticResource MainView}">TEST</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label HorizontalAlignment="Center" Margin="10">GRUPY</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Grupy, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label HorizontalAlignment="Center" Margin="10">ELEMENTY</Label>
+            <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Elementy, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" FontStyle="Italic" Content="Razem: "/>
+        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" FontStyle="Italic">
+            <Label.Content>
+                <MultiBinding Mode="OneWay" Converter="{StaticResource konwSkladoweDoSumy}">
+                    <Binding Path="Zlecenia"/>
+                    <Binding Path="Grupy"/>
+                    <Binding Path="Elementy"/>
+                </MultiBinding>
+            </Label.Content>
+        </Label>
+    </Grid>
+</Window>

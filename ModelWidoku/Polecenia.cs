@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MVVMtest.ModelWidoku {
+namespace MVVMtest.ModelWidoku
+{
     public class PolecenieZmien : ICommand {
-
         private readonly WidokGlowny wg;
-        public event EventHandler CanExecuteChanged;
-
+        public event EventHandler CanExecuteChanged {
+            add {
+                CommandManager.RequerySuggested += value;
+            }
+            remove {
+                CommandManager.RequerySuggested -= value;
+            }
+        }
         public PolecenieZmien(WidokGlowny widok) {
             wg = widok ?? throw new ArgumentNullException("widok");
         }
-
         public bool CanExecute(object parameter) {
-            return true;
+            return wg.Zlecenia >= 0m;
         }
         public void Execute(object parameter) {
-            wg.Zlecenia = 1m;
-            wg.Grupy = 1m;
-            wg.Elementy = 1m;
+            wg.Zlecenia = 220m;
+            wg.Grupy = 110m;
+            wg.Elementy = 110m;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MVVMtest.Model {
+namespace MVVMtest.ModelWidoku {
     public abstract class Powiadomienia : INotifyPropertyChanged {
 
         public event PropertyChangedEventHandler PropertyChanged;

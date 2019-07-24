@@ -74,7 +74,7 @@
     <Compile Include="ModelWidoku\WidokGlowny.cs" />
     <Compile Include="Model\Cosik.cs" />
     <Compile Include="Model\DAL.cs" />
-    <Compile Include="Model\Powiadomienia.cs" />
+    <Compile Include="ModelWidoku\Powiadomienia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

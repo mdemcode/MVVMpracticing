@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using MVVMtest.Model;
+using System.Windows.Input;
 
 namespace MVVMtest.ModelWidoku {
     public class WidokGlowny : Powiadomienia {

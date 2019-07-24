@@ -25,7 +25,7 @@
         <StackPanel Grid.Column="0">
             <Label HorizontalAlignment="Center" Margin="10">ZLECENIA</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Zlecenia, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
-            <Button x:Name="Testowy" Margin="50" Command="{Binding Zapisz}" CommandParameter="{StaticResource MainView}">TEST</Button>
+            <Button x:Name="Testowy" Margin="50" Command="{Binding Zapisz}" >TEST</Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label HorizontalAlignment="Center" Margin="10">GRUPY</Label>

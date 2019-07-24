@@ -20,9 +20,9 @@ namespace MVVMtest.ModelWidoku
             return wg.Zlecenia >= 0m;
         }
         public void Execute(object parameter) {
-            wg.Zlecenia = 220m;
-            wg.Grupy = 110m;
-            wg.Elementy = 110m;
+            wg.Zlecenia = 1m;
+            wg.Grupy = 2m;
+            wg.Elementy = 3m;
         }
     }
 }

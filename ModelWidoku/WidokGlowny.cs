@@ -36,7 +36,17 @@ namespace MVVMtest.ModelWidoku {
         private ICommand zapisz;
         public ICommand Zapisz {
             get {
-                if (zapisz == null) zapisz = new PolecenieZmien(this);
+                if (zapisz == null) {
+                    zapisz = new RelayCommand
+                        (
+                            argument => {
+                                Zlecenia = 100m;
+                                Grupy = 200m;
+                                Elementy = 300m;
+                            },
+                            argument => Zlecenia>=0m
+                        );
+                }
                 return zapisz;
             }
         }

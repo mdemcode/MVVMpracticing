@@ -40,14 +40,32 @@ namespace MVVMtest.ModelWidoku {
                     zapisz = new RelayCommand
                         (
                             argument => {
-                                Zlecenia = 100m;
-                                Grupy = 200m;
-                                Elementy = 300m;
+                                Zlecenia = 0m;
+                                Grupy = 0m;
+                                Elementy = 0m;
                             },
                             argument => Zlecenia>=0m
                         );
                 }
                 return zapisz;
+            }
+        }
+
+        private ICommand zapisz2;
+        public ICommand Zapisz2 {
+            get {
+                if (zapisz2 == null) {
+                    zapisz2 = new RelayCommand
+                        (
+                            argument => {
+                                Zlecenia = 10m;
+                                Grupy = 20m;
+                                Elementy = 30m;
+                            },
+                            argument => Zlecenia >= 0m
+                        );
+                }
+                return zapisz2;
             }
         }
         #endregion

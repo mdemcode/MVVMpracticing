@@ -3,16 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:mw="clr-namespace:MVVMtest.ModelWidoku"
         xmlns:widok="clr-namespace:MVVMtest.Widok"
         mc:Ignorable="d"
         Title="MVVM" Height="250" Width="800" BorderBrush="#FF1781EC" BorderThickness="1" WindowStyle="ToolWindow">
     <Window.Resources>
-        <mw:WidokGlowny x:Key="MainView"/>
+        <!-- <mw:WidokGlowny x:Key="MainView"/> -->
         <widok:DecimalToWalutaKonw x:Key="konwDecimalToWaluta"/>
         <widok:SkladoweDoSumyKonw x:Key="konwSkladoweDoSumy"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource MainView}">
+    <Window.DataContext>
+        <mw:WidokGlowny />
+    </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding Zapisz}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid> <!-- DataContext="{StaticResource MainView}" -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -25,7 +36,7 @@
         <StackPanel Grid.Column="0">
             <Label HorizontalAlignment="Center" Margin="10">ZLECENIA</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Zlecenia, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
-            <Button x:Name="Testowy" Margin="50" Command="{Binding Zapisz}" >TEST</Button>
+            <Button x:Name="Testowy" Margin="50" Command="{Binding Zapisz2}" >TEST</Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label HorizontalAlignment="Center" Margin="10">GRUPY</Label>

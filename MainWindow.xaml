@@ -45,6 +45,7 @@
         <StackPanel Grid.Column="2">
             <Label HorizontalAlignment="Center" Margin="10">ELEMENTY</Label>
             <Label HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Elementy, Mode=OneWay, Converter={StaticResource konwDecimalToWaluta}}"/>
+            <Button x:Name="Testowy2" Margin="50" Content="Test drugiego okna" Click="Testowy2_Click"/>
         </StackPanel>
         <Label Background="LightSeaGreen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" FontStyle="Italic" Content="Razem: "/>
